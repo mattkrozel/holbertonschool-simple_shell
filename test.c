@@ -32,7 +32,7 @@ int main(void)
 
 		while (token != NULL)
 		{
-			printf("Token: %s%n", token);
+			printf("Token: %s\n", token);
 			token = strtok(NULL, " ");;
 		}
 	}
