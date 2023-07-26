@@ -7,6 +7,7 @@ int main(void)
 	char *buffer;
 	size_t buffsize = 32;
 	size_t characters;
+	int tkncntr;
 
 	buffer = (char *)malloc(buffsize * sizeof(char));
 	if (buffer == NULL)
@@ -25,7 +26,17 @@ int main(void)
 
 		printf("%zu characters read \n", characters);
 		printf("your command is %s \n", buffer);
+		
+		char *token;
+		token = strtok(buffer, " ");
+
+		while (token != NULL)
+		{
+			printf("Token: %s%n", token);
+			token = strtok(NULL, " ");;
+		}
 	}
 
+	free(buffer);
 	return (0);
 }
