@@ -5,10 +5,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stddef.h>
-#include <starg.h>
+#include <sys/wait.h>
+#include <unistd.h>
 
-typedef struct 
 
 
 #endif 
-

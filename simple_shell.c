@@ -1,13 +1,11 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#include "main.h"
 
 int main(void)
 {
 	char *buffer;
+	char *token;
 	size_t buffsize = 32;
 	size_t characters;
-	int tkncntr;
 
 	buffer = (char *)malloc(buffsize * sizeof(char));
 	if (buffer == NULL)
@@ -27,13 +25,12 @@ int main(void)
 		printf("%zu characters read \n", characters);
 		printf("your command is %s \n", buffer);
 		
-		char *token;
 		token = strtok(buffer, " ");
 
 		while (token != NULL)
 		{
 			printf("Token: %s\n", token);
-			token = strtok(NULL, " ");;
+			token = strtok(NULL, " ");
 		}
 	}
 
