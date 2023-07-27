@@ -2,9 +2,10 @@
 
 int main(void)
 {
-	char *buffer;
-	char *token;
 	size_t buffsize = 32;
+	int x = 0, i;
+	char *buffer, *token;
+	char **array = malloc(buffsize * sizeof(char*));
 	size_t characters;
 
 	buffer = (char *)malloc(buffsize * sizeof(char));
@@ -29,9 +30,11 @@ int main(void)
 
 		while (token != NULL)
 		{
-			printf("Token: %s\n", token);
+			array[x++] = token;
 			token = strtok(NULL, " ");
 		}
+		for (i = 0; i < x; ++i)
+			printf("%s\n", array[i]);
 	}
 
 	free(buffer);
