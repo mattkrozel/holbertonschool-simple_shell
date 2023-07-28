@@ -5,9 +5,9 @@ int main(void)
 	size_t buffsize = 32;
 	int x = 0, i;
 	char *buffer, *token;
-	char **token_array = malloc(buffsize * sizeof(char*));
+	char **token_array = malloc(buffsize * sizeof(char *));
 	size_t characters;
-	
+
 	buffer = (char *)malloc(buffsize * sizeof(char));
 	if (buffer == NULL || token_array == NULL)
 	{
@@ -29,7 +29,7 @@ int main(void)
 
 		printf("%zu characters read \n", characters);
 		printf("your command is %s \n", buffer);
-		
+
 		token = strtok(buffer, " ");
 
 		while (token != NULL)
