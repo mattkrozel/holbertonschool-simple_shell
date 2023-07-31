@@ -39,8 +39,11 @@ char **split_string(char *str, const char *delimiters, int *num_tokens)
 void print_tokens(char **tokens, int num_tokens)
 {
 	    for (int i = 0; i < num_tokens; ++i)
+	    {
 		    printf("%s\n", tokens[i]);
+	    }
 }
+
 void free_tokens(char **tokens, int num_tokens)
 {
 	for (int i = 0; i < num_tokens; ++i)
