@@ -14,7 +14,7 @@ int main(void)
 		exit(1);
 	}
 
-	while (1)
+	while (buffer)
 	{
 		buffer = get_input(&characters, &buffsize);
 		characters = getline(&buffer, &buffsize, stdin);
