@@ -2,9 +2,10 @@
 
 char *get_input(size_t *buffsize)
 {
+	ssize_t characters;
 	char *buffer = NULL;
-	printf("enter command: "); 
-	ssize_t characters = getline(&buffer, buffsize, stdin);
+	printf("enter command: ");
+	characters = getline(&buffer, buffsize, stdin);
 
 	if (characters == -1)
 	{
