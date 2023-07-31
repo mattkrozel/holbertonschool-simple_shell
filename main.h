@@ -13,7 +13,7 @@
 
 
 
-char *get_input(size_t *characters, size_t *buffsize);
+char *get_input(size_t *buffsize);
 char **split_string(char *str, const char *delimiters, int *num_tokens);
 void print_tokens(char **tokens, int num_tokens);
 void free_tokens(char **tokens, int num_tokens);

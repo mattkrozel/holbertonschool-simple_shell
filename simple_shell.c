@@ -16,7 +16,7 @@ int main(void)
 
 	while (buffer)
 	{
-		buffer = get_input(&characters, &buffsize);
+		buffer = get_input(&buffsize);
 		characters = getline(&buffer, &buffsize, stdin);
 		if (characters > 0 && buffer[characters - 1] == '\n')
 		{
@@ -25,9 +25,9 @@ int main(void)
 		}	
 		if (strcmp(buffer, "exit") == 0)
 		{
-			break;
+			exit(0);
 		}
-		printf("%d characters read \n", characters);
+		printf("%ld characters read \n", characters);
 		printf("your command is %s \n", buffer);
 
 		token_array = split_string(buffer, WHITESPACE, &num_tokens);
