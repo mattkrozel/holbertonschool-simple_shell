@@ -4,7 +4,7 @@ char **split_string(char *str, const char *delimiters, int *num_tokens)
 {	
 	char *token;
 	char **tokens = NULL;
-	int buffer_size = 32;
+	int buffer_size = BUFF_SIZE;
 	int count = 0;
 	
 	tokens = malloc(buffer_size * sizeof(char *));

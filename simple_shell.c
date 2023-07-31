@@ -2,13 +2,13 @@
 
 int main(void)
 {
-	size_t buffsize = 32;
+	size_t buffsize = BUFF_SIZE;
 	int x = 0;
 	char *buffer, **token_array;
 	size_t characters;
 
 	buffer = (char *)malloc(buffsize * sizeof(char));
-	if (buffer == NULL)
+	if (buffer == NULL || token_array == NULL)
 	{
 		fprintf(stderr, "Memory allocation error.\n");
 		exit(1);
@@ -25,7 +25,6 @@ int main(void)
 		}	
 		if (strcmp(buffer, "exit") == 0)
 		{
-			free(buffer);	
 			break;
 		}
 		printf("%zu characters read \n", characters);
@@ -33,7 +32,7 @@ int main(void)
 
 		int num_tokens;
 
-		token_array = split_string(buffer, " ", &num_tokens);
+		token_array = split_string(buffer, WHITESPACE, &num_tokens);
 		print_tokens(token_array, num_tokens);
 		free_tokens(token_array, num_tokens);
 
