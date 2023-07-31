@@ -11,7 +11,7 @@
 #define BUFF_SIZE 1024
 #define WHITESPACE " \n\t\r"
 
-
+extern char **environ;
 
 char *get_input(size_t *buffsize);
 char **split_string(char *str, const char *delimiters, int *num_tokens);

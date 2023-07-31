@@ -2,8 +2,7 @@
 
 char *get_input(size_t *buffsize)
 {
-	char *buffer = NULL;
-
+	char *buffer;
 	printf("enter command: ");
        	getline(&buffer, buffsize, stdin);
 
