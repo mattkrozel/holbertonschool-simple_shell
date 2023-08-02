@@ -19,4 +19,6 @@ void print_tokens(char **tokens, int num_tokens);
 void free_tokens(char **tokens, int num_tokens);
 int isatty(int fd);
 
+char **argv;
+
 #endif 

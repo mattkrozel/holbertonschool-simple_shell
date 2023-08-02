@@ -54,3 +54,12 @@ void free_tokens(char **tokens, int num_tokens)
 	}
 	free(tokens);
 }
+
+char **argv = malloc(sizeof(char *) * num_tokens);
+
+for (int i = 0; i < num_tokens; i++)
+{
+	argv[i] = malloc(sizeof(char) * strlen(token));
+	strcpy(argv[i], token);
+	token = strtok(NULL, delim);
+}
