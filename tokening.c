@@ -55,16 +55,3 @@ void free_tokens(char **tokens, int num_tokens)
 	}
 	free(tokens);
 }
-
-void execute_command(char *command) 
-{
-	int num_tokens;
-	char **tokens = split_string(command, WHITESPACE, &num_tokens);
-	char *argv[num_tokens + 1];
-	for (int i = 0; i < num_tokens; i++) 
-	{
-		argv[i] = tokens[i];
-	}
-			argv[num_tokens] = NULL;
-			execve(argv[0], argv, NULL);
-}
