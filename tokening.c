@@ -34,6 +34,7 @@ char **split_string(char *str, const char *delimiters, int *num_tokens)
 	
 	*num_tokens = count;
 	return tokens;
+
 }
 
 void print_tokens(char **tokens, int num_tokens)
@@ -55,11 +56,15 @@ void free_tokens(char **tokens, int num_tokens)
 	free(tokens);
 }
 
-char **argv = malloc(sizeof(char *) * num_tokens);
-
-for (int i = 0; i < num_tokens; i++)
+void execute_command(char *command) 
 {
-	argv[i] = malloc(sizeof(char) * strlen(token));
-	strcpy(argv[i], token);
-	token = strtok(NULL, delim);
+	int num_tokens;
+	char **tokens = split_string(command, WHITESPACE, &num_tokens);
+	char *argv[num_tokens + 1];
+	for (int i = 0; i < num_tokens; i++) 
+	{
+		argv[i] = tokens[i];
+	}
+			argv[num_tokens] = NULL;
+			execve(argv[0], argv, NULL);
 }

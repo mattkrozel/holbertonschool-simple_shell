@@ -18,7 +18,7 @@ char **split_string(char *str, const char *delimiters, int *num_tokens);
 void print_tokens(char **tokens, int num_tokens);
 void free_tokens(char **tokens, int num_tokens);
 int isatty(int fd);
-
-char **argv;
+void execute_command(char *command);
+char *get_input(size_t *buffsize);
 
 #endif 
