@@ -20,6 +20,10 @@ void execute_input(char **argv)
 		else
 		{
 			waitpid(pid, &status, 0);
+			if (status != 0)
+			{
+				fprintf(stderr, "Command failed with status %d. \n", status);
+			}
 
 		}
 	}
