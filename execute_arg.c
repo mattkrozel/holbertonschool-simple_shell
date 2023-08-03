@@ -9,10 +9,18 @@ void execute_input(char **argv)
 		command = argv[0];
 		real_command = find_command(command);
 		
-		if (execve(real_command, argv, NULL) == -1)
+		pid_t pid;
+		int status;
+
+		pid = fork();
+		if (pid == 0)
 		{
-			perror("Error");
-			return;
+			execve(real_command, argv, NULL);
+		}
+		else
+		{
+			waitpid(pid, &status, 0);
+
 		}
 	}
 }
