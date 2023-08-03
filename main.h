@@ -6,6 +6,7 @@
 #include <stdlib.h>
 #include <stddef.h>
 #include <sys/wait.h>
+#include <sys/stat.h>
 #include <unistd.h>
 #include <stdarg.h>
 #define BUFF_SIZE 1024
