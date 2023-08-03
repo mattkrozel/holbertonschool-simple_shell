@@ -43,4 +43,5 @@ char *find_command(char *command)
 
 		return NULL;
 	}
+	return NULL;
 }

@@ -7,6 +7,9 @@ int main(int ac, char **argv)
 	size_t characters;
 	int num_tokens, i;
 	(void)ac;
+	long unsigned int a;
+
+	a = -1;
 
 	buffer = (char *)malloc(buffsize * sizeof(char));
 	if (buffer == NULL)
@@ -19,7 +22,7 @@ int main(int ac, char **argv)
 	{
 		buffer = get_input(&buffsize);
 		characters = strlen(buffer);
-		if (characters == -1)
+		if (characters == a)
 		{
 			printf("Exiting shell....\n");
 			return (-1);
@@ -40,7 +43,7 @@ int main(int ac, char **argv)
 
 		token_array = split_string(buffer, WHITESPACE, &num_tokens);
 		print_tokens(token_array, num_tokens);
-		char **argv = malloc(sizeof(char *) * (num_tokens + 1));
+		**argv = malloc(sizeof(char *) * (num_tokens + 1));
 		if (!argv)
 		{
 			fprintf(stderr, "Memory allocation error.\n");
