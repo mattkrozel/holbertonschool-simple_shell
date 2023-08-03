@@ -39,11 +39,15 @@ int main(int ac, char **argv)
 			free(buffer);
 			exit(0);
 		}
-		//printf("%ld characters read \n", characters);
-		//printf("your command is %s \n", buffer);
-
+/**		
+ *		printf("%ld characters read \n", characters);
+ *		printf("your command is %s \n", buffer);
+ */
 		token_array = split_string(buffer, WHITESPACE, &num_tokens);
-		//print_tokens(token_array, num_tokens);
+/**		
+ *		print_tokens(token_array, num_tokens);
+ */		
+		free_tokens(argv, num_tokens);
 		argv = (char **)malloc(sizeof(char *) * (num_tokens + 1));
 		if (!argv)
 		{
@@ -54,7 +58,7 @@ int main(int ac, char **argv)
 		for (i = 0; i < num_tokens; i++)
 			argv[i] = strdup(token_array[i]);
 		argv[num_tokens] = NULL;
-		real_command = find_command(argv[0]);
+		real_command = find_command(buffer);
 		if (real_command != NULL)
 		{
 			execute_input(argv);
@@ -65,8 +69,7 @@ int main(int ac, char **argv)
 		}
 
 		free_tokens(token_array, num_tokens);
-		free(argv);
+		free(buffer);
 	}
-	free(buffer);
 	return (0);
 }
