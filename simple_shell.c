@@ -2,12 +2,12 @@
 
 int main(int ac, char **argv)
 {
+	long unsigned int a;
 	size_t buffsize = BUFF_SIZE;
 	char *buffer, **token_array;
 	size_t characters;
 	int num_tokens, i;
 	(void)ac;
-	long unsigned int a;
 
 	a = -1;
 
@@ -43,8 +43,8 @@ int main(int ac, char **argv)
 
 		token_array = split_string(buffer, WHITESPACE, &num_tokens);
 		print_tokens(token_array, num_tokens);
-		**argv = malloc(sizeof(char *) * (num_tokens + 1));
-		if (!argv)
+		*argv = malloc(sizeof(char *) * (num_tokens + 1));
+		if (*argv == NULL)
 		{
 			fprintf(stderr, "Memory allocation error.\n");
 			exit(1);
