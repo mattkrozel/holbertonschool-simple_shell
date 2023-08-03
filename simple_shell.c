@@ -39,11 +39,14 @@ int main(int ac, char **argv)
 			free(buffer);
 			exit(0);
 		}
-		//printf("%ld characters read \n", characters);
-		//printf("your command is %s \n", buffer);
-
+/**		
+ *		printf("%ld characters read \n", characters);
+ *		printf("your command is %s \n", buffer);
+ */
 		token_array = split_string(buffer, WHITESPACE, &num_tokens);
-		//print_tokens(token_array, num_tokens);
+/**		
+ *		print_tokens(token_array, num_tokens);
+ */		
 		argv = (char **)malloc(sizeof(char *) * (num_tokens + 1));
 		if (!argv)
 		{
