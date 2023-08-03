@@ -43,21 +43,28 @@ int main(int ac, char **argv)
 
 		token_array = split_string(buffer, WHITESPACE, &num_tokens);
 		print_tokens(token_array, num_tokens);
-		*argv = malloc(sizeof(char *) * (num_tokens + 1));
+		**argv = malloc(sizeof(char *) * (num_tokens + 1));
 		if (!argv)
 		{
 			fprintf(stderr, "Memory allocation error.\n");
 			exit(1);
 		}
+		*argv = argv;
 		for (i = 0; i < num_tokens; i++)
 			argv[i] = strdup(token_array[i]);
 		argv[num_tokens] = NULL;
-
-		execute_input(argv);
-
+		if (real_command != NULL)
+		{
+			execute_input(*argv);
+		}
+		else
+		{
+			fprintf(stderr, "Command not found: %s\n", (*argv)[0]);
+		}
 
 		free_tokens(token_array, num_tokens);
+		free(*argv);
 	}
-	free(argv);
+	free(buffer);
 	return (0);
 }
