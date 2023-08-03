@@ -7,7 +7,9 @@ void execute_input(char **argv)
 	if (argv)
 	{
 		command = argv[0];
-		if (execve(command, argv, NULL) == -1)
+		real_command = find_command(command);
+		
+		if (execve(real_command, argv, NULL) == -1)
 		{
 			perror("Error");
 			return;
