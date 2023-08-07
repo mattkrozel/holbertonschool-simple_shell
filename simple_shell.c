@@ -27,15 +27,19 @@ int main(int ac, char **argv, char **env)
 				buffer = NULL;
 			}
 			if (isatty(STDIN_FILENO))
-					write(STDOUT_FILENO, "\n", 1);
-				free(buffer);
-				exit(EXIT_SUCCESS);
+				write(STDOUT_FILENO, "\n", 1);
+			free(buffer);
+			exit(EXIT_SUCCESS);
 		}
 		signal(SIGINT, handle);
 		if (characters == a)
 		{
 			printf("Exiting shell....\n");
 			return (EXIT_FAILURE);
+		}
+		if (characters == 1 && buffer[0] == '\n')
+		{
+			continue;
 		}
 		if (characters > 0 && buffer[characters - 1] == '\n')
 		{
