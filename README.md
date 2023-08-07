@@ -43,7 +43,7 @@ Output:
      AUTHORS execute_arg.c path.c man_1_simple_shell 
      take_input.c README.md simple_shell.c tokening.c
 
-## Built-in Commands
+
 
 
 
@@ -51,7 +51,7 @@ Output:
 
 ## File Contents
 
-|  |  |
+
 |--|--|
 |main.h|  |
 | simpleshell.c |  |
