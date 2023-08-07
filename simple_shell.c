@@ -28,11 +28,7 @@ int main(int ac, char **argv, char **env)
 		if (characters == a)
 		{
 			printf("Exiting shell....\n");
-			return (-1);
-		}
-		if (characters == -1)
-		{
-			return(EXIT_FAILURE);
+			return (EXIT_FAILURE);
 		}
 		if (characters > 0 && buffer[characters - 1] == '\n')
 		{
