@@ -37,7 +37,7 @@ void execute_input(char **argv)
 
 void print_enviro(char **env)
 {
-	size_t = 0, length = 0;
+	size_t i = 0, length = 0;
 
 	while (env[i])
 	{

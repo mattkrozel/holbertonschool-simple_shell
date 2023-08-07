@@ -45,7 +45,7 @@ int main(int ac, char **argv, char **env)
 			exit(0);
 		}
 		if (strcmp(buffer, "env") == 0)
-			prinnt_enviro(env);
+			print_enviro(env);
 /**		
  *		printf("%ld characters read \n", characters);
  *		printf("your command is %s \n", buffer);
@@ -87,5 +87,5 @@ int main(int ac, char **argv, char **env)
 void handle(int signals)
 {
 	(void)signals;
-	write(STDOU_FILENO, "\n$ " 2);
+	write(STDOUT_FILENO, "\n$ ", 2);
 }
