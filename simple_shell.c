@@ -4,7 +4,7 @@ int main(int ac, char **argv, char **env)
 {
 	long unsigned int a;
 	size_t buffsize = BUFF_SIZE;
-	char *buffer, **token_array;
+	char *buffer = NULL, **token_array;
 	size_t characters;
 	int num_tokens, i;
 	char *real_command;
@@ -13,18 +13,25 @@ int main(int ac, char **argv, char **env)
 
 	a = -1;
 
-	buffer = (char *)malloc(buffsize * sizeof(char));
-	if (buffer == NULL)
-	{
-		fprintf(stderr, "Memory allocation error.\n");
-		exit(1);
-	}
 
 	while (1)
 	{
-		buffer = get_input(&buffsize);
+		if (isatty(STDIN_FILENO))
+			write(STDIN_FILENO, "$ ", 2);
+		characters = getline(&buffer, &buffsize, stdin);
+		if (characters == EOF)
+		{
+			if (buffer)
+			{
+				free(buffer);
+				buffer = NULL;
+			}
+			if (isatty(STDIN_FILENO))
+					write(STDOUT_FILENO, "\n", 1);
+				free(buffer);
+				exit(EXIT_SUCCESS);
+		}
 		signal(SIGINT, handle);
-		characters = strlen(buffer);
 		if (characters == a)
 		{
 			printf("Exiting shell....\n");
@@ -47,6 +54,7 @@ int main(int ac, char **argv, char **env)
  *		printf("your command is %s \n", buffer);
  */
 		token_array = split_string(buffer, WHITESPACE, &num_tokens);
+		free(buffer);
 /**		
  *		print_tokens(token_array, num_tokens);
  */		
