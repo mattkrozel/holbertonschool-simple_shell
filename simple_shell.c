@@ -2,10 +2,10 @@
 
 int main(int ac, char **argv, char **env)
 {
-	long unsigned int a;
+	ssize_t a;
 	size_t buffsize = BUFF_SIZE;
 	char *buffer = NULL, **token_array;
-	size_t characters;
+	ssize_t characters;
 	int num_tokens, i;
 	char *real_command;
 	
