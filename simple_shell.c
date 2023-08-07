@@ -1,6 +1,6 @@
 #include "main.h"
 
-int main(int ac, char **argv)
+int main(int ac, char **argv, char **env)
 {
 	long unsigned int a;
 	size_t buffsize = BUFF_SIZE;
@@ -8,6 +8,7 @@ int main(int ac, char **argv)
 	size_t characters;
 	int num_tokens, i;
 	char *real_command;
+	
 	(void)ac;
 
 	a = -1;
@@ -22,13 +23,17 @@ int main(int ac, char **argv)
 	while (1)
 	{
 		buffer = get_input(&buffsize);
+		signal(SIGINT, handle);
 		characters = strlen(buffer);
 		if (characters == a)
 		{
 			printf("Exiting shell....\n");
 			return (-1);
 		}
-
+		if (characters == -1)
+		{
+			return(EXIT_FAILURE);
+		}
 		if (characters > 0 && buffer[characters - 1] == '\n')
 		{
 			buffer[characters - 1] = '\0';
@@ -39,6 +44,8 @@ int main(int ac, char **argv)
 			free(buffer);
 			exit(0);
 		}
+		if (strcmp(buffer, "env") == 0)
+			prinnt_enviro(env);
 /**		
  *		printf("%ld characters read \n", characters);
  *		printf("your command is %s \n", buffer);
@@ -69,7 +76,16 @@ int main(int ac, char **argv)
 
 		free_tokens(token_array, num_tokens);
 		free(argv);
+		fflush(stdin);
+		buffer = NULL, buffsize = 0;
 	}
 	free(buffer);
-	return (0);
+
+	return (EXIT_SUCCESS);
+}
+
+void handle(int signals)
+{
+	(void)signals;
+	write(STDOU_FILENO, "\n$ " 2);
 }
