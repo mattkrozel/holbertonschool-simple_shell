@@ -2,7 +2,7 @@
 
 char *find_command(char *command)
 {
-	char *path, *path_copy, *path_token, *file_path;
+	char *path, *path_copy, *path_token, *file_path, *temp_path;
 	int command_length, directory_length;
 	struct stat buffer;
 
@@ -11,6 +11,7 @@ char *find_command(char *command)
 	if (path)
 	{
 		path_copy = strdup(path);
+		temp_path = path_copy;
 		command_length = strlen(command);
 
 		path_token = strsep(&path_copy, ":");
@@ -34,7 +35,7 @@ char *find_command(char *command)
 			}
 		}
 
-		free(path_copy);
+		free(temp_path);
 
 		if (stat(command, &buffer) == 0)
 		{

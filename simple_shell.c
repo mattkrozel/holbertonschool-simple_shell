@@ -82,12 +82,14 @@ int main(int ac, char **argv, char **env)
 			fprintf(stderr, "Command not found: %s\n", argv[0]);
 		}
 
-		free_tokens(token_array, num_tokens);
 		free(argv);
+		free_tokens(token_array, num_tokens);
+
 		fflush(stdin);
 		buffer = NULL, buffsize = 0;
 	}
 	free(buffer);
+
 
 	return (EXIT_SUCCESS);
 }
