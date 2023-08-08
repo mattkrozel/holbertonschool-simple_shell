@@ -1,5 +1,6 @@
 #include "main.h"
 
+
 int main(int ac, char **argv, char **env)
 {
 	ssize_t a;
@@ -16,9 +17,12 @@ int main(int ac, char **argv, char **env)
 
 	while (1)
 	{
+		/* displays prompt */
 		if (isatty(STDIN_FILENO))
 			write(STDIN_FILENO, "$ ", 2);
+		/* reads users input */
 		characters = getline(&buffer, &buffsize, stdin);
+		/* ctrl+D */
 		if (characters == EOF)
 		{
 			if (buffer)
@@ -31,16 +35,19 @@ int main(int ac, char **argv, char **env)
 			free(buffer);
 			exit(EXIT_SUCCESS);
 		}
+		/* ctrl+c */
 		signal(SIGINT, handle);
 		if (characters == a)
 		{
 			printf("Exiting shell....\n");
 			return (EXIT_FAILURE);
 		}
+		/* checks empty input */
 		if (characters == 1 && buffer[0] == '\n')
 		{
 			continue;
 		}
+		/* removes newline if present */
 		if (characters > 0 && buffer[characters - 1] == '\n')
 		{
 			buffer[characters - 1] = '\0';
@@ -53,15 +60,10 @@ int main(int ac, char **argv, char **env)
 		}
 		if (strcmp(buffer, "env") == 0)
 			print_enviro(env);
-/**		
- *		printf("%ld characters read \n", characters);
- *		printf("your command is %s \n", buffer);
- */
+		/* tokenizes buffer */
 		token_array = split_string(buffer, WHITESPACE, &num_tokens);
 		free(buffer);
-/**		
- *		print_tokens(token_array, num_tokens);
- */		
+		/* allocating memory for argv and then passing tokens into */
 		argv = (char **)malloc(sizeof(char *) * (num_tokens + 1));
 		if (!argv)
 		{
@@ -72,6 +74,7 @@ int main(int ac, char **argv, char **env)
 		for (i = 0; i < num_tokens; i++)
 			argv[i] = strdup(token_array[i]);
 		argv[num_tokens] = NULL;
+		/* finding command path */
 		real_command = find_command(argv[0]);
 		if (real_command != NULL)
 		{
@@ -81,19 +84,23 @@ int main(int ac, char **argv, char **env)
 		{
 			fprintf(stderr, "Command not found: %s\n", argv[0]);
 		}
-
+		
 		free(argv);
 		free_tokens(token_array, num_tokens);
 
 		fflush(stdin);
 		buffer = NULL, buffsize = 0;
 	}
+	/* free buffer before exit */
 	free(buffer);
 
 
 	return (EXIT_SUCCESS);
 }
-
+/**
+ * handle - signal handler for ctrl+c
+ * @signals: signal
+ */
 void handle(int signals)
 {
 	(void)signals;
