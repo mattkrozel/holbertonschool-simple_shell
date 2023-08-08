@@ -6,6 +6,7 @@
  * @param delimiters: The delimiters for splitting the string.
  * @param num_tokens: A pointer to an integer that will store the number of tokens produced.
  * @return A pointer to an array of tokens.
+ */
 
 char **split_string(char *str, const char *delimiters, int *num_tokens)
 {	
