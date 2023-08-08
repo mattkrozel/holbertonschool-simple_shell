@@ -1,19 +1,18 @@
 #include "main.h"
-
-
+/**
+ * main - shell that executes user input as commannds
+ * @ac: argument count
+ * @argv: argument
+ * @env: path
+ */
 int main(int ac, char **argv, char **env)
 {
-	ssize_t a;
 	size_t buffsize = BUFF_SIZE;
 	char *buffer = NULL, **token_array;
 	ssize_t characters;
 	int num_tokens, i;
 	char *real_command;
-	
 	(void)ac;
-
-	a = -1;
-
 
 	while (1)
 	{
@@ -37,7 +36,6 @@ int main(int ac, char **argv, char **env)
 		}
 		/* ctrl+c */
 		signal(SIGINT, handle);
-
 		/* checks empty input */
 		if (characters == 1 && buffer[0] == '\n')
 		{
@@ -48,7 +46,7 @@ int main(int ac, char **argv, char **env)
 		{
 			buffer[characters - 1] = '\0';
 			--characters;
-		}	
+		}
 		if (strcmp(buffer, "exit") == 0)
 		{
 			free(buffer);
@@ -66,7 +64,6 @@ int main(int ac, char **argv, char **env)
 			fprintf(stderr, "Memory allocation error.\n");
 			exit(1);
 		}
-
 		for (i = 0; i < num_tokens; i++)
 			argv[i] = strdup(token_array[i]);
 		argv[num_tokens] = NULL;
@@ -80,17 +77,13 @@ int main(int ac, char **argv, char **env)
 		{
 			fprintf(stderr, "Command not found: %s\n", argv[0]);
 		}
-		
 		free(argv);
 		free_tokens(token_array, num_tokens);
-
 		fflush(stdin);
 		buffer = NULL, buffsize = 0;
 	}
 	/* free buffer before exit */
 	free(buffer);
-
-
 	return (EXIT_SUCCESS);
 }
 /**
