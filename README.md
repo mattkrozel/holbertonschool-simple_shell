@@ -2,7 +2,7 @@
 
 SimpleShell is a basic Unix shell implementation written in C. It allows users to execute commands, manage processes, and interact with the operating system.
 
-[Github Simple Shell Repository link](https://github.com/mattkrozel/holbertonschool-simple_shell)
+[Github Repository link](https://github.com/mattkrozel/holbertonschool-simple_shell)
 
 # Requirements
 
@@ -24,7 +24,9 @@ SimpleShell is a basic Unix shell implementation written in C. It allows users t
 **Interative mode:**
 
 Command:
+
 ```./a.out```
+
 ```$ ls```
 
 Output:
@@ -44,27 +46,9 @@ Output:
      take_input.c README.md simple_shell.c tokening.c
 
 
-
-
-
-
-
-## File Contents
-
-|  |  |
-|--|--|
-|main.h|  |
-| simpleshell.c |  |
-|take_input.c
-|tokening.c  |  |
-|path.c||
-|execute_arg.c|  |
-
-
-
 ## Flowchart 
 
-[Flowchart link](Flowchart%20link)
+![9DD1B19B-7FC6-458F-94AC-9B8437C992ED](https://github.com/mattkrozel/holbertonschool-simple_shell/assets/125398766/bf1a6244-edaa-49a9-8ce3-627da586988a)
 
 
 ## Authors
