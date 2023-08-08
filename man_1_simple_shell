@@ -1,0 +1,31 @@
+./" Man page for simple_shell
+.TH SIMPLE_SHELL 1 simple_shell\-0.1
+.SH NAME
+simple_shell \- a basic command-line shell
+.SH SYNOPSIS
+.B simple_shell
+.RI [ options ]
+.SH DESCRIPTION
+simple_shell is a basic command-line shell offering a range of shell functionalities. It allows users to execute commands, manage processes, and interact with the underlying operating system.
+.PP
+The shell supports:
+.IP \[bu] 2
+Basic command execution.
+.IP \[bu] 2
+Piping and redirection.
+.IP \[bu] 2
+Environment variable management.
+.SH OPTIONS
+.IP "--help"
+Displays help information.
+.IP "--version"
+Displays the version of the simple_shell.
+.SH SEE ALSO
+.BR bash (1),
+.BR sh (1)
+.SH BUGS
+No known bugs.
+.SH AUTHOR
+Matthew Krozel <mattkrozel@gmail.com>
+Abrielle Perrt <abrielleperry22@icloud.com.
+
