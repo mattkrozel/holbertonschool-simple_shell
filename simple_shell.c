@@ -37,11 +37,7 @@ int main(int ac, char **argv, char **env)
 		}
 		/* ctrl+c */
 		signal(SIGINT, handle);
-		if (characters == a)
-		{
-			printf("Exiting shell....\n");
-			return (EXIT_FAILURE);
-		}
+
 		/* checks empty input */
 		if (characters == 1 && buffer[0] == '\n')
 		{
